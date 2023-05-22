@@ -12,8 +12,10 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Dropzone from "react-dropzone";
 function App() {
   const [count, setCount] = useState(0);
+  const [excelFile, setExcelFile] = useState<File | null>(null);
 
   return (
     // <Container>
@@ -284,44 +286,80 @@ function App() {
     //   </Tabs>
     // </Container>
 
-    <Container>
-      <div
-        style={{ display: "flex", justifyContent: "right", marginTop: "5rem" }}
-      >
-        <Button className="primary_btn">Back</Button>
-      </div>
-      <Form style={{ width: "30%", margin: "auto" }}>
-        <Form.Group className="mb-3" controlId="formRegisterName">
-          <Form.Label>Register Name</Form.Label>
-          <Form.Control type="email" placeholder="Enter register name" />
-        </Form.Group>
+    // <Container>
+    //   <div
+    //     style={{ display: "flex", justifyContent: "right", marginTop: "5rem" }}
+    //   >
+    //     <Button className="primary_btn">Back</Button>
+    //   </div>
+    //   <Form style={{ width: "30%", margin: "auto" }}>
+    //     <Form.Group className="mb-3" controlId="formRegisterName">
+    //       <Form.Label>Register Name</Form.Label>
+    //       <Form.Control type="email" placeholder="Enter register name" />
+    //     </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formCompanyName">
-          <Form.Label>Company Name</Form.Label>
-          <Form.Control type="password" placeholder="Enter company name" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Link Preset</Form.Label>
-          <Form.Select>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </Form.Select>
-        </Form.Group>
-        <Row>
-          <Col style={{ textAlign: "center" }}>
-            <Button className="primary_btn" variant="primary" type="submit">
-              Create Register <br />
-              <i>Create</i>
-            </Button>
-          </Col>
-          <Col style={{ textAlign: "center" }}>
-            <Button className="primary_btn" variant="primary" type="submit">
-              Upload Register
-            </Button>
-          </Col>
-        </Row>
-      </Form>
+    //     <Form.Group className="mb-3" controlId="formCompanyName">
+    //       <Form.Label>Company Name</Form.Label>
+    //       <Form.Control type="password" placeholder="Enter company name" />
+    //     </Form.Group>
+    //     <Form.Group className="mb-3">
+    //       <Form.Label>Link Preset</Form.Label>
+    //       <Form.Select>
+    //         <option value="1">One</option>
+    //         <option value="2">Two</option>
+    //         <option value="3">Three</option>
+    //       </Form.Select>
+    //     </Form.Group>
+    //     <Row>
+    //       <Col style={{ textAlign: "center" }}>
+    //         <Button className="primary_btn" variant="primary" type="submit">
+    //           Create Register <br />
+    //           <i>Create the register is MyFinalyst</i>
+    //         </Button>
+    //       </Col>
+    //       <Col style={{ textAlign: "center" }}>
+    //         <Button className="primary_btn" variant="primary" type="submit">
+    //           Upload Register <br />
+    //           <i>Upload excel/csv files with the list of</i>
+    //         </Button>
+    //       </Col>
+    //     </Row>
+    //   </Form>
+    // </Container>
+
+    <Container style={{ paddingTop: "5rem" }}>
+      <div>
+        <b>Receivable register format</b>
+        <p>- Please ensure header columns are in the first row.</p>
+        <p>- Remove subtotal values in the middle or at the end.</p>
+        <p>
+          - Mandatory columns includes Invoice date, Party name, Due date,
+          Credit period, Nature of receivables,Amount.
+        </p>
+      </div>
+
+      <div>
+        <b>Upload register</b>
+        <Dropzone
+          onDrop={(acceptedFiles) => {
+            const file = acceptedFiles[0];
+            console.log(file);
+
+            setExcelFile(file);
+          }}
+        >
+          {({ getRootProps, getInputProps }) => (
+            <section>
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <p>Drag 'n' drop some files here, or click to select files</p>
+              </div>
+            </section>
+          )}
+        </Dropzone>
+
+        {excelFile && <h4>File uploaded: {excelFile.name}</h4>}
+      </div>
     </Container>
   );
 }
