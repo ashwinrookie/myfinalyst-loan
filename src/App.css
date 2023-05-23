@@ -48,3 +48,12 @@
 .actionIcons svg:nth-child(2) {
   font-size: 25px !important;
 }
+
+.dropZone {
+  height: 160px;
+  border: 2px dashed green;
+  margin-top: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}

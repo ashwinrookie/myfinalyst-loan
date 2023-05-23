@@ -13,10 +13,25 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropzone from "react-dropzone";
+import { ImFolderUpload } from "react-icons/im";
+import { useDropzone } from "react-dropzone";
+import * as XLSX from "xlsx";
 function App() {
   const [count, setCount] = useState(0);
-  const [excelFile, setExcelFile] = useState<File | null>(null);
+  const [excelFiles, setExcelFile] = useState<Array<File>>([]);
+  const [onlyOneSheet, setOnlyOneSheet] = useState<Boolean>(true);
 
+  const handleFileDelete = (name: string) => {
+    const filteredFiles = excelFiles.filter((file) => file.name !== name);
+    console.log(filteredFiles);
+
+    setExcelFile(excelFiles.filter((file) => file.name !== name));
+    console.log(excelFiles);
+
+    if (excelFiles.length === 0) {
+      setOnlyOneSheet(true);
+    }
+  };
   return (
     // <Container>
     //   <Tabs
@@ -340,25 +355,76 @@ function App() {
 
       <div>
         <b>Upload register</b>
-        <Dropzone
-          onDrop={(acceptedFiles) => {
-            const file = acceptedFiles[0];
-            console.log(file);
+        {onlyOneSheet === true ? (
+          <Dropzone
+            onDrop={(acceptedFiles) => {
+              const file = acceptedFiles[0];
+              console.log(file);
+              const reader = new FileReader();
+              reader.onload = (event: ProgressEvent<FileReader>) => {
+                const data = new Uint8Array(
+                  event.target?.result as ArrayBuffer
+                );
+                const workbook = XLSX.read(data, { type: "array" });
+                const sheetNames = workbook.SheetNames;
 
-            setExcelFile(file);
-          }}
-        >
-          {({ getRootProps, getInputProps }) => (
-            <section>
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                setOnlyOneSheet(sheetNames.length === 1);
+              };
+
+              reader.readAsArrayBuffer(file);
+              setExcelFile([...excelFiles, file]);
+            }}
+          >
+            {({ getRootProps, getInputProps }) => (
+              <section>
+                <div className="dropZone" {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  <ImFolderUpload
+                    style={{
+                      width: "60px",
+                      height: "50px",
+                      color: "green",
+                      marginTop: "2rem",
+                    }}
+                  />
+                  <p style={{ margin: "auto" }}>
+                    Drop your files here, or click to select files.
+                  </p>
+                </div>
+              </section>
+            )}
+          </Dropzone>
+        ) : (
+          <></>
+        )}
+
+        {excelFiles.length != 0 ? (
+          <h4 style={{ marginTop: "1rem" }}>File(s) Uploaded:</h4>
+        ) : (
+          <h4 style={{ marginTop: "1rem" }}>No Files Uploaded</h4>
+        )}
+        {excelFiles &&
+          excelFiles.map((file) => {
+            return (
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <h5
+                  style={{ margin: "0", marginRight: "1rem" }}
+                  key={file.name}
+                >
+                  {file.name}
+                </h5>
+                <BsTrashFill
+                  onClick={() => handleFileDelete(file.name)}
+                  style={{
+                    color: "red",
+                    height: "35px",
+                    width: "25px",
+                    cursor: "pointer",
+                  }}
+                />
               </div>
-            </section>
-          )}
-        </Dropzone>
-
-        {excelFile && <h4>File uploaded: {excelFile.name}</h4>}
+            );
+          })}
       </div>
     </Container>
   );
