@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import BasicInfo from "./AddRegisterFlow/BasicInfo";
 import Home from "./home/Home";
 import UploadPage from "./AddRegisterFlow/UploadPage";
+import CreateRegister from "./AddRegisterFlow/CreateRegister";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/basicInfo" element={<BasicInfo />} />
         <Route path="/uploadPage" element={<UploadPage />} />
+        <Route path="/createRegister" element={<CreateRegister />} />
       </Routes>
     </>
   );

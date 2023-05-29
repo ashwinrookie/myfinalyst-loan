@@ -33,10 +33,12 @@ function BasicInfo() {
         </Form.Group>
         <Row>
           <Col style={{ textAlign: "center" }}>
-            <Button className="primary_btn" variant="primary" type="submit">
-              Create Register <br />
-              <i>Create the register is MyFinalyst</i>
-            </Button>
+            <Link to={"/createRegister"}>
+              <Button className="primary_btn" variant="primary" type="submit">
+                Create Register <br />
+                <i>Create the register is MyFinalyst</i>
+              </Button>
+            </Link>
           </Col>
           <Col style={{ textAlign: "center" }}>
             <Link to={"/uploadPage"}>
