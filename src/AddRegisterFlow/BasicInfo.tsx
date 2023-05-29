@@ -36,7 +36,10 @@ function BasicInfo() {
             <Link to={"/createRegister"}>
               <Button className="primary_btn" variant="primary" type="submit">
                 Create Register <br />
-                <i>Create the register is MyFinalyst</i>
+                <i>
+                  Create the {localStorage.getItem("registerType")} register in
+                  MyFinalyst
+                </i>
               </Button>
             </Link>
           </Col>

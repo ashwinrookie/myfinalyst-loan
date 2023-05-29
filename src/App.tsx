@@ -6,6 +6,7 @@ import UploadPage from "./AddRegisterFlow/UploadPage";
 import CreateRegister from "./AddRegisterFlow/CreateRegister";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
+import MappingPage from "./AddRegisterFlow/MappingPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/basicInfo" element={<BasicInfo />} />
         <Route path="/uploadPage" element={<UploadPage />} />
         <Route path="/createRegister" element={<CreateRegister />} />
+        <Route path="/mappingPage" element={<MappingPage />} />
       </Routes>
     </>
   );

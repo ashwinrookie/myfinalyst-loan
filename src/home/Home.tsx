@@ -150,7 +150,14 @@ function Home() {
               </tr>
             </tbody>
           </Table>
-          <Button className="primary_btn">Add new register</Button>
+          <Link
+            to={"/basicInfo"}
+            onClick={() => {
+              localStorage.setItem("registerType", "Payable");
+            }}
+          >
+            <Button className="primary_btn">Add new register</Button>
+          </Link>
         </Tab>
         <Tab eventKey="Sales" title="Sales Registers">
           <Table bordered hover>
@@ -214,7 +221,14 @@ function Home() {
               </tr>
             </tbody>
           </Table>
-          <Button className="primary_btn">Add new register</Button>
+          <Link
+            to={"/basicInfo"}
+            onClick={() => {
+              localStorage.setItem("registerType", "Sales");
+            }}
+          >
+            <Button className="primary_btn">Add new register</Button>
+          </Link>
         </Tab>
         <Tab
           eventKey="Purchases/Inventory"
@@ -281,7 +295,14 @@ function Home() {
               </tr>
             </tbody>
           </Table>
-          <Button className="primary_btn">Add new register</Button>
+          <Link
+            to={"/basicInfo"}
+            onClick={() => {
+              localStorage.setItem("registerType", "Purchases/Inventory");
+            }}
+          >
+            <Button className="primary_btn">Add new register</Button>
+          </Link>
         </Tab>
       </Tabs>
     </Container>
