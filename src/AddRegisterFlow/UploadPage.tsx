@@ -16,9 +16,9 @@ function UploadPage() {
     setExcelFile((currentFiles) => {
       return currentFiles.filter((file) => file.name !== name);
     });
-    console.log(excelFiles);
+    console.log(filteredFiles);
 
-    if (excelFiles.length === 0) {
+    if (filteredFiles.length === 0) {
       setOnlyOneSheet(true);
     }
   };
@@ -36,7 +36,7 @@ function UploadPage() {
 
       <div>
         <b>Upload register</b>
-        {onlyOneSheet === true ? (
+        {onlyOneSheet === true && (
           <Dropzone
             onDrop={(acceptedFiles) => {
               const file = acceptedFiles[0];
@@ -76,8 +76,6 @@ function UploadPage() {
               </section>
             )}
           </Dropzone>
-        ) : (
-          <></>
         )}
 
         {excelFiles.length != 0 ? (
@@ -88,11 +86,11 @@ function UploadPage() {
         {excelFiles &&
           excelFiles.map((file) => {
             return (
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <h5
-                  style={{ margin: "0", marginRight: "1rem" }}
-                  key={file.name}
-                >
+              <div
+                key={file.name}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <h5 style={{ margin: "0", marginRight: "1rem" }}>
                   {file.name}
                 </h5>
                 <BsTrashFill

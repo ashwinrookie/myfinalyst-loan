@@ -88,6 +88,7 @@ function Home() {
             <Button className="primary_btn">Add new register</Button>
           </Link>
         </Tab>
+
         <Tab eventKey="Payable" title="Payable Registers">
           <Table bordered hover>
             <thead>
@@ -159,6 +160,7 @@ function Home() {
             <Button className="primary_btn">Add new register</Button>
           </Link>
         </Tab>
+
         <Tab eventKey="Sales" title="Sales Registers">
           <Table bordered hover>
             <thead>
@@ -230,6 +232,7 @@ function Home() {
             <Button className="primary_btn">Add new register</Button>
           </Link>
         </Tab>
+
         <Tab
           eventKey="Purchases/Inventory"
           title="Purchases/Inventory Registers"
