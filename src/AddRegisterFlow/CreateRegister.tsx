@@ -1,9 +1,37 @@
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import { useState } from "react";
+
 function CreatRegister() {
+  const [projectsArray, setProjectArray] = useState([
+    {
+      inoiceDate: "23/3/23",
+      customerName: "Sezad",
+      invoiceAmount: "2300 Rs",
+      outstandingAmtinRepCountry: "340 $",
+      creditPeriod: "23/4/23",
+      natureOfReceivables: "Securred",
+    },
+  ]);
+
+  const handleAddLine = () => {
+    console.log("hi");
+
+    setProjectArray([
+      ...projectsArray,
+      {
+        inoiceDate: "",
+        customerName: "",
+        invoiceAmount: "",
+        outstandingAmtinRepCountry: "",
+        creditPeriod: "",
+        natureOfReceivables: "",
+      },
+    ]);
+  };
   return (
     <>
       {localStorage.getItem("registerType") === "Receivable" && (
@@ -13,57 +41,50 @@ function CreatRegister() {
               Create {localStorage.getItem("registerType")} Register
             </b>
           </div>
-          <Form style={{ width: "50%", margin: "auto" }}>
-            <Row>
-              <Col>
-                <Form.Group className="mb-3" controlId="formInvoiceDate">
-                  <Form.Label>Invoice Date</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Invoice Date" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formInvoiceNumber">
-                  <Form.Label>Invoice Number</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter Invoice Number"
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formCustomerID">
-                  <Form.Label>Customer ID</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Customer ID" />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3" controlId="formOutstandingAmount">
-                  <Form.Label>
-                    Outstanding Amount in reporting currency
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter Invoice Number"
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formInvoiceAmount">
-                  <Form.Label>Invoice Amount</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter Invoice Amount"
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formDueDate">
-                  <Form.Label>Due Date</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Due Date" />
-                </Form.Group>
-              </Col>
-            </Row>
-
-            <Button className="primary_btn" variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
+          <Table bordered hover>
+            <thead>
+              <tr>
+                <th></th>
+                <th>S.No</th>
+                <th>Invoice Date</th>
+                <th>Invoice Number</th>
+                <th>Customer ID</th>
+                <th>Outstanding Amt in rep.currency</th>
+                <th>Due Date</th>
+                <th>Invoice Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {projectsArray.map((data) => {
+                return (
+                  <tr key={data.customerName}>
+                    <td>
+                      <Form>
+                        <Form.Check
+                          type="checkbox"
+                          id="exampleCheckbox"
+                          label="Select"
+                        />
+                      </Form>
+                    </td>
+                    <td>1</td>
+                    <td>{data.inoiceDate}</td>
+                    <td>{data.customerName}</td>
+                    <td>{data.invoiceAmount}</td>
+                    <td>{data.outstandingAmtinRepCountry}</td>
+                    <td>{data.creditPeriod}</td>
+                    <td>{data.natureOfReceivables}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+          <Button
+            style={{ background: "green", width: "100px", border: "none" }}
+            onClick={() => handleAddLine()}
+          >
+            +
+          </Button>
         </Container>
       )}
 
@@ -74,66 +95,149 @@ function CreatRegister() {
               Create {localStorage.getItem("registerType")} Register
             </b>
           </div>
-          <Form style={{ width: "50%", margin: "auto" }}>
-            <Row>
-              <Col>
-                <Form.Group className="mb-3" controlId="formInvoiceDate">
-                  <Form.Label>Invoice Date</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Invoice Date" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formInvoiceNumber">
-                  <Form.Label>Invoice Number</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter Invoice Number"
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formSupplierID">
-                  <Form.Label>Supplier ID</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Supplier ID" />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3" controlId="formOutstandingAmount">
-                  <Form.Label>
-                    Outstanding Amount in reporting currency
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter Invoice Number"
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formInvoiceAmount">
-                  <Form.Label>Invoice Amount</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter Invoice Amount"
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formDueDate">
-                  <Form.Label>Due Date</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Due Date" />
-                </Form.Group>
-              </Col>
-            </Row>
-
-            <Button className="primary_btn" variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
+          <Table bordered hover>
+            <thead>
+              <tr>
+                <th></th>
+                <th>S.No</th>
+                <th>Invoice Date</th>
+                <th>Invoice Number</th>
+                <th>Supplier ID</th>
+                <th>Outstanding Amt in rep.currency</th>
+                <th>Due Date</th>
+                <th>Invoice Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {projectsArray.map((data) => {
+                return (
+                  <tr key={data.customerName}>
+                    <td>
+                      <Form>
+                        <Form.Check
+                          type="checkbox"
+                          id="exampleCheckbox"
+                          label="Select"
+                        />
+                      </Form>
+                    </td>
+                    <td>1</td>
+                    <td>{data.inoiceDate}</td>
+                    <td>{data.customerName}</td>
+                    <td>{data.invoiceAmount}</td>
+                    <td>{data.outstandingAmtinRepCountry}</td>
+                    <td>{data.creditPeriod}</td>
+                    <td>{data.natureOfReceivables}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+          <Button
+            style={{ background: "green", width: "100px", border: "none" }}
+            onClick={() => handleAddLine()}
+          >
+            +
+          </Button>
         </Container>
       )}
 
       {localStorage.getItem("registerType") === "Sales" && (
-        <Container>hi Sales</Container>
+        <Container style={{ paddingTop: "5rem" }}>
+          <Table bordered hover>
+            <thead>
+              <tr>
+                <th></th>
+                <th>S.No</th>
+                <th>Invoice Date</th>
+                <th>Customer Name</th>
+                <th>Invoice Amount</th>
+                <th>Outstanding Amt in rep.currency</th>
+                <th>Credit Period</th>
+                <th>Nature of receivables</th>
+              </tr>
+            </thead>
+            <tbody>
+              {projectsArray.map((data) => {
+                return (
+                  <tr key={data.customerName}>
+                    <td>
+                      <Form>
+                        <Form.Check
+                          type="checkbox"
+                          id="exampleCheckbox"
+                          label="Select"
+                        />
+                      </Form>
+                    </td>
+                    <td>1</td>
+                    <td>{data.inoiceDate}</td>
+                    <td>{data.customerName}</td>
+                    <td>{data.invoiceAmount}</td>
+                    <td>{data.outstandingAmtinRepCountry}</td>
+                    <td>{data.creditPeriod}</td>
+                    <td>{data.natureOfReceivables}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+          <Button
+            style={{ background: "green", width: "100px", border: "none" }}
+            onClick={() => handleAddLine()}
+          >
+            +
+          </Button>
+        </Container>
       )}
 
       {localStorage.getItem("registerType") === "Purchases/Inventory" && (
-        <Container>hi Pur</Container>
+        <Container style={{ paddingTop: "5rem" }}>
+          <Table bordered hover>
+            <thead>
+              <tr>
+                <th></th>
+                <th>S.No</th>
+                <th>Invoice Date</th>
+                <th>Customer Name</th>
+                <th>Invoice Amount</th>
+                <th>Outstanding Amt in rep.currency</th>
+                <th>Credit Period</th>
+                <th>Nature of receivables</th>
+              </tr>
+            </thead>
+            <tbody>
+              {projectsArray.map((data) => {
+                return (
+                  <tr key={data.customerName}>
+                    <td>
+                      <Form>
+                        <Form.Check
+                          type="checkbox"
+                          id="exampleCheckbox"
+                          label="Select"
+                        />
+                      </Form>
+                    </td>
+                    <td>1</td>
+                    <td>{data.inoiceDate}</td>
+                    <td>{data.customerName}</td>
+                    <td>{data.invoiceAmount}</td>
+                    <td>{data.outstandingAmtinRepCountry}</td>
+                    <td>{data.creditPeriod}</td>
+                    <td>{data.natureOfReceivables}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+          <Button
+            style={{ background: "green", width: "100px", border: "none" }}
+            onClick={() => handleAddLine()}
+          >
+            +
+          </Button>
+        </Container>
       )}
     </>
   );

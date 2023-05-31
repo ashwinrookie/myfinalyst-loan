@@ -4,6 +4,8 @@ import * as XLSX from "xlsx";
 import Container from "react-bootstrap/Container";
 import { useState } from "react";
 import { BsTrashFill } from "react-icons/bs";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function UploadPage() {
   const [excelFiles, setExcelFile] = useState<Array<File>>([]);
@@ -81,7 +83,7 @@ function UploadPage() {
         {excelFiles.length != 0 ? (
           <h4 style={{ marginTop: "1rem" }}>File(s) Uploaded:</h4>
         ) : (
-          <h4 style={{ marginTop: "1rem" }}>No Files Uploaded</h4>
+          <h4 style={{ marginTop: "1rem" }}>No Files Uploaded!</h4>
         )}
         {excelFiles &&
           excelFiles.map((file) => {
@@ -105,6 +107,13 @@ function UploadPage() {
               </div>
             );
           })}
+      </div>
+      <div style={{ textAlign: "center", marginTop: "2rem" }}>
+        <Link to={"/mappingPage"}>
+          <Button style={{ background: "green", border: "none" }}>
+            Proceed
+          </Button>
+        </Link>
       </div>
     </Container>
   );
