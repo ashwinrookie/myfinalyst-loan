@@ -635,6 +635,157 @@ function Home() {
             </div>
           </div>
         </Tab>
+
+        <Tab eventKey="FAR" title="FAR">
+          {activeView === "list" ? (
+            <Table bordered hover>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th>Company Name</th>
+
+                  <th>Related Project Name</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <Form>
+                      <Form.Check
+                        type="checkbox"
+                        id="exampleCheckbox"
+                        label="Select"
+                      />
+                    </Form>
+                  </td>
+                  <td>FAR Register</td>
+                  <td>Otto</td>
+
+                  <td>NA</td>
+                  <td>
+                    <div className="actionIcons">
+                      <BsFillShareFill />
+                      <MdDriveFileRenameOutline />
+                      <BsTrashFill />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <Form>
+                      <Form.Check
+                        type="checkbox"
+                        id="exampleCheckbox"
+                        label="Select"
+                      />
+                    </Form>
+                  </td>
+                  <td>FAR Register 2</td>
+                  <td>Otto</td>
+
+                  <td>NA</td>
+                  <td>
+                    <div className="actionIcons">
+                      <BsFillShareFill />
+                      <MdDriveFileRenameOutline />
+                      <BsTrashFill />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "2rem",
+              }}
+            >
+              <div
+                style={{
+                  border: "2px solid black",
+                  padding: "5px",
+                  borderRadius: "3px",
+                  width: "140px",
+                  textAlign: "center",
+                  marginRight: "2rem",
+                }}
+              >
+                <AiFillFolderOpen
+                  style={{
+                    height: "80px",
+                    width: "80px",
+                  }}
+                />{" "}
+                <br />
+                FAR Register
+              </div>
+
+              <div
+                style={{
+                  border: "2px solid black",
+                  padding: "5px",
+                  borderRadius: "3px",
+                  width: "140px",
+                  textAlign: "center",
+                  marginRight: "2rem",
+                }}
+              >
+                <AiFillFolderOpen
+                  style={{
+                    height: "80px",
+                    width: "80px",
+                  }}
+                />{" "}
+                <br />
+                FAR Register
+              </div>
+            </div>
+          )}
+
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Link
+              to={"/basicInfo"}
+              onClick={() => {
+                localStorage.setItem("registerType", "FAR");
+              }}
+            >
+              <Button className="primary_btn">Add new register</Button>
+            </Link>
+            <div style={{ marginLeft: "auto" }}>
+              <AiOutlineUnorderedList
+                className={`${
+                  activeView === "list" ? "activeView" : "inactiveView"
+                }`}
+                style={{
+                  height: "40px",
+                  width: "40px",
+                  padding: "7px",
+                  marginRight: "10px",
+                }}
+                onClick={() => {
+                  setActiveView("list");
+                }}
+              />
+              <AiFillFolder
+                className={`${
+                  activeView === "grid" ? "activeView" : "inactiveView"
+                }`}
+                style={{
+                  height: "40px",
+                  width: "40px",
+                  padding: "5px",
+                }}
+                onClick={() => {
+                  setActiveView("grid");
+                }}
+              />
+            </div>
+          </div>
+        </Tab>
       </Tabs>
     </Container>
   );

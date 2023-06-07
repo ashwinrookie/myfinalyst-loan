@@ -2,10 +2,12 @@ import { Button, Container, Table } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { BsTrashFill } from "react-icons/bs";
 
 import { useState } from "react";
 
 function CreatRegister() {
+  const [assetBlocks, setAssetBlocks] = useState([1]);
   const [projectsArray, setProjectArray] = useState([
     {
       inoiceDate: "23/3/23",
@@ -31,6 +33,14 @@ function CreatRegister() {
         natureOfReceivables: "",
       },
     ]);
+  };
+  const handleAddBlock = () => {
+    setAssetBlocks([...assetBlocks, 2]);
+  };
+  const handleDeleteBlock = (e: number) => {
+    setAssetBlocks((currentArray) => {
+      return currentArray.filter((i) => i !== e);
+    });
   };
   return (
     <>
@@ -236,6 +246,55 @@ function CreatRegister() {
             onClick={() => handleAddLine()}
           >
             +
+          </Button>
+        </Container>
+      )}
+
+      {localStorage.getItem("registerType") === "FAR" && (
+        <Container style={{ paddingTop: "5rem" }}>
+          <h5>
+            <b>Create Fixed assets register</b>
+          </h5>
+          <p>
+            Please ensure that each asset block created is similar in terms of
+            useful life and depreciation policy.
+          </p>
+          {assetBlocks.map((data) => {
+            return (
+              <Row key={data} style={{ marginTop: "1rem" }}>
+                <Col>
+                  <Form style={{ width: "70%" }}>
+                    <Form.Group className="mb-3" controlId="formRegisterName">
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter block of asset"
+                      />
+                    </Form.Group>
+                  </Form>
+                </Col>
+                <Col>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Button>Asset details</Button>
+                    <BsTrashFill
+                      onClick={() => handleDeleteBlock(data)}
+                      style={{
+                        marginLeft: "1rem",
+                        height: "35px",
+                        width: "25px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            );
+          })}
+
+          <Button
+            onClick={() => handleAddBlock()}
+            style={{ background: "green", border: "none" }}
+          >
+            Add new block
           </Button>
         </Container>
       )}

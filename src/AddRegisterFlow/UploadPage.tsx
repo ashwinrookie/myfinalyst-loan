@@ -27,7 +27,7 @@ function UploadPage() {
   return (
     <Container style={{ paddingTop: "5rem" }}>
       <div>
-        <b>Receivable register format</b>
+        <b>{localStorage.getItem("registerType")} register format</b>
         <p>- Please ensure header columns are in the first row.</p>
         <p>- Remove subtotal values in the middle or at the end.</p>
         <p>
