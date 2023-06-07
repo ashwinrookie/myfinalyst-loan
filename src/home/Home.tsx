@@ -21,7 +21,7 @@ function Home() {
       <Tabs
         defaultActiveKey="Receivable"
         id="uncontrolled-tab-example"
-        className="mb-4"
+        className="home_tabs mb-4"
       >
         <Tab eventKey="Receivable" title="Receivable Registers">
           {activeView === "list" ? (
