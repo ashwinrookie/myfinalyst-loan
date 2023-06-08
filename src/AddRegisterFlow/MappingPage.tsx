@@ -8,7 +8,7 @@ function MappingPage() {
   return (
     <>
       {localStorage.getItem("registerType") === "Receivable" && (
-        <Container style={{ paddingTop: "5rem" }}>
+        <Container style={{ paddingTop: "3rem" }}>
           <Tabs
             defaultActiveKey="home"
             id="uncontrolled-tab-example"
@@ -19,31 +19,7 @@ function MappingPage() {
                 <Col style={{ padding: "0 7rem" }}>
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Credit period</b>
-                    </label>
-                    <Form.Select aria-label="Default select example">
-                      <option>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </Form.Select>
-                  </div>
-
-                  <div style={{ marginBottom: "2rem" }}>
-                    <label style={{ marginBottom: "5px" }}>
                       <b>Invoice Amount</b>
-                    </label>
-                    <Form.Select aria-label="Default select example">
-                      <option>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </Form.Select>
-                  </div>
-
-                  <div style={{ marginBottom: "2rem" }}>
-                    <label style={{ marginBottom: "5px" }}>
-                      <b>Invoice Date</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -67,7 +43,43 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Invoice Amount</b>
+                      <b>Customer ID</b>
+                    </label>
+                    <Form.Select aria-label="Default select example">
+                      <option>Open this select menu</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </Form.Select>
+                  </div>
+
+                  <div style={{ marginBottom: "2rem" }}>
+                    <label style={{ marginBottom: "5px" }}>
+                      <b>Outstanding amount in reporting currency</b>
+                    </label>
+                    <Form.Select aria-label="Default select example">
+                      <option>Open this select menu</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </Form.Select>
+                  </div>
+
+                  <div style={{ marginBottom: "2rem" }}>
+                    <label style={{ marginBottom: "5px" }}>
+                      <b>Credit period</b>
+                    </label>
+                    <Form.Select aria-label="Default select example">
+                      <option>Open this select menu</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </Form.Select>
+                  </div>
+
+                  <div style={{ marginBottom: "2rem" }}>
+                    <label style={{ marginBottom: "5px" }}>
+                      <b>Nature of receivables</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -104,7 +116,19 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Invoice Amount</b>
+                      <b>Currency</b>
+                    </label>
+                    <Form.Select aria-label="Default select example">
+                      <option>Open this select menu</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </Form.Select>
+                  </div>
+
+                  <div style={{ marginBottom: "2rem" }}>
+                    <label style={{ marginBottom: "5px" }}>
+                      <b>Exchange rates used</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
