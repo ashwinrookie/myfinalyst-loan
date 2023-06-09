@@ -44,8 +44,11 @@ function CreatRegister() {
   };
   return (
     <>
+      <Container style={{ paddingTop: "3rem", paddingBottom: "1rem" }}>
+        <h5>Create {localStorage.getItem("registerType")} register</h5>
+      </Container>
       {localStorage.getItem("registerType") === "Receivable" && (
-        <Container style={{ paddingTop: "5rem" }}>
+        <Container>
           <div style={{ textAlign: "center", marginBottom: "2rem" }}>
             <b style={{ fontSize: "20px" }}>
               Create {localStorage.getItem("registerType")} Register
@@ -59,7 +62,6 @@ function CreatRegister() {
                 <th>Invoice Date</th>
                 <th>Invoice Number</th>
                 <th>Customer ID</th>
-                <th>Outstanding Amt in rep.currency</th>
                 <th>Due Date</th>
                 <th>Invoice Amount</th>
               </tr>
@@ -81,9 +83,8 @@ function CreatRegister() {
                     <td>{data.inoiceDate}</td>
                     <td>{data.customerName}</td>
                     <td>{data.invoiceAmount}</td>
+                    <td>23/2/23</td>
                     <td>{data.outstandingAmtinRepCountry}</td>
-                    <td>{data.creditPeriod}</td>
-                    <td>{data.natureOfReceivables}</td>
                   </tr>
                 );
               })}
@@ -99,7 +100,7 @@ function CreatRegister() {
       )}
 
       {localStorage.getItem("registerType") === "Payable" && (
-        <Container style={{ paddingTop: "5rem" }}>
+        <Container>
           <div style={{ textAlign: "center", marginBottom: "2rem" }}>
             <b style={{ fontSize: "20px" }}>
               Create {localStorage.getItem("registerType")} Register
@@ -113,8 +114,7 @@ function CreatRegister() {
                 <th>Invoice Date</th>
                 <th>Invoice Number</th>
                 <th>Supplier ID</th>
-                <th>Outstanding Amt in rep.currency</th>
-                <th>Due Date</th>
+                <th>Credit Period</th>
                 <th>Invoice Amount</th>
               </tr>
             </thead>
@@ -137,7 +137,6 @@ function CreatRegister() {
                     <td>{data.invoiceAmount}</td>
                     <td>{data.outstandingAmtinRepCountry}</td>
                     <td>{data.creditPeriod}</td>
-                    <td>{data.natureOfReceivables}</td>
                   </tr>
                 );
               })}
@@ -153,18 +152,16 @@ function CreatRegister() {
       )}
 
       {localStorage.getItem("registerType") === "Sales" && (
-        <Container style={{ paddingTop: "5rem" }}>
+        <Container>
           <Table bordered hover>
             <thead>
               <tr>
                 <th></th>
                 <th>S.No</th>
                 <th>Invoice Date</th>
-                <th>Customer Name</th>
-                <th>Invoice Amount</th>
-                <th>Outstanding Amt in rep.currency</th>
-                <th>Credit Period</th>
-                <th>Nature of receivables</th>
+                <th>Invoice Number</th>
+                <th>Customer Code</th>
+                <th>Sales value</th>
               </tr>
             </thead>
             <tbody>
@@ -185,8 +182,6 @@ function CreatRegister() {
                     <td>{data.customerName}</td>
                     <td>{data.invoiceAmount}</td>
                     <td>{data.outstandingAmtinRepCountry}</td>
-                    <td>{data.creditPeriod}</td>
-                    <td>{data.natureOfReceivables}</td>
                   </tr>
                 );
               })}
@@ -202,18 +197,18 @@ function CreatRegister() {
       )}
 
       {localStorage.getItem("registerType") === "Purchases/Inventory" && (
-        <Container style={{ paddingTop: "5rem" }}>
+        <Container>
           <Table bordered hover>
             <thead>
               <tr>
                 <th></th>
                 <th>S.No</th>
                 <th>Invoice Date</th>
-                <th>Customer Name</th>
-                <th>Invoice Amount</th>
-                <th>Outstanding Amt in rep.currency</th>
-                <th>Credit Period</th>
-                <th>Nature of receivables</th>
+                <th>Invoice Number</th>
+                <th>Supplier Code Amount</th>
+                <th>Inventory part</th>
+                <th>Inventory quantity</th>
+                <th>Purchase amount</th>
               </tr>
             </thead>
             <tbody>
@@ -251,7 +246,7 @@ function CreatRegister() {
       )}
 
       {localStorage.getItem("registerType") === "FAR" && (
-        <Container style={{ paddingTop: "5rem" }}>
+        <Container>
           <h5>
             <b>Create Fixed assets register</b>
           </h5>
