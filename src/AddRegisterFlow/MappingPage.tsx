@@ -678,18 +678,6 @@ function MappingPage() {
                     </Form.Select>
                   </div>
 
-                  <div style={{ marginBottom: "2rem" }}>
-                    <label style={{ marginBottom: "5px" }}>
-                      <b>Exchange rate</b>
-                    </label>
-                    <Form.Select aria-label="Default select example">
-                      <option>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </Form.Select>
-                  </div>
-
                   <Button className="primary_btn">Add column</Button>
                 </Col>
               </Row>
@@ -716,7 +704,7 @@ function MappingPage() {
                 <Col style={{ padding: "0 7rem" }}>
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Invoice date</b>
+                      <b>Asset ID</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -728,7 +716,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Invoice Number</b>
+                      <b>Dep rate</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -740,7 +728,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Supplier Code</b>
+                      <b>Business area</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -752,7 +740,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Supplier name</b>
+                      <b>Asset description</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -764,7 +752,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Inventory part</b>
+                      <b>Block of asset</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -775,7 +763,7 @@ function MappingPage() {
                   </div>
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Inventory quantity</b>
+                      <b>Capitalized on</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -786,7 +774,7 @@ function MappingPage() {
                   </div>
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Purchase amount</b>
+                      <b>Deactivation on</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -798,7 +786,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Rate</b>
+                      <b>Book value of deletion</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -811,7 +799,7 @@ function MappingPage() {
                 <Col style={{ padding: "0 7rem" }}>
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Tax</b>
+                      <b>Opening gross block</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -823,7 +811,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Credit period</b>
+                      <b>Opening accumulated description</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -835,7 +823,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Currency</b>
+                      <b>Terminal value of asset</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -847,7 +835,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Exchange rates</b>
+                      <b>Opening book value</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -859,7 +847,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Amount is base currency</b>
+                      <b>Acquisition cost for current additions</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -871,7 +859,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Invoice value</b>
+                      <b>Depreciation charge for the period</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -883,7 +871,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Exchange rate</b>
+                      <b>Deletion gross block</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>
@@ -895,7 +883,7 @@ function MappingPage() {
 
                   <div style={{ marginBottom: "2rem" }}>
                     <label style={{ marginBottom: "5px" }}>
-                      <b>Exchange rate</b>
+                      <b>Deletion depreciation</b>
                     </label>
                     <Form.Select aria-label="Default select example">
                       <option>Open this select menu</option>

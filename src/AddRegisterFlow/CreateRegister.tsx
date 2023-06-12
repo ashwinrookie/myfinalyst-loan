@@ -49,11 +49,6 @@ function CreatRegister() {
       </Container>
       {localStorage.getItem("registerType") === "Receivable" && (
         <Container>
-          <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-            <b style={{ fontSize: "20px" }}>
-              Create {localStorage.getItem("registerType")} Register
-            </b>
-          </div>
           <Table bordered hover>
             <thead>
               <tr>
@@ -101,11 +96,6 @@ function CreatRegister() {
 
       {localStorage.getItem("registerType") === "Payable" && (
         <Container>
-          <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-            <b style={{ fontSize: "20px" }}>
-              Create {localStorage.getItem("registerType")} Register
-            </b>
-          </div>
           <Table bordered hover>
             <thead>
               <tr>
@@ -247,10 +237,7 @@ function CreatRegister() {
 
       {localStorage.getItem("registerType") === "FAR" && (
         <Container>
-          <h5>
-            <b>Create Fixed assets register</b>
-          </h5>
-          <p>
+          <p style={{ marginTop: "-1rem" }}>
             Please ensure that each asset block created is similar in terms of
             useful life and depreciation policy.
           </p>
