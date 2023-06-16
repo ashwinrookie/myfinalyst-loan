@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BsTrashFill } from "react-icons/bs";
-
+import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 
 function CreatRegister() {
@@ -18,6 +18,10 @@ function CreatRegister() {
       natureOfReceivables: "Securred",
     },
   ]);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleAddLine = () => {
     console.log("hi");
@@ -256,7 +260,7 @@ function CreatRegister() {
                 </Col>
                 <Col>
                   <div style={{ display: "flex", alignItems: "center" }}>
-                    <Button>Asset details</Button>
+                    <Button onClick={() => handleShow()}>Asset details</Button>
                     <BsTrashFill
                       onClick={() => handleDeleteBlock(data)}
                       style={{
@@ -280,6 +284,18 @@ function CreatRegister() {
           </Button>
         </Container>
       )}
+
+      <Modal dialogClassName="modal-90w" show={show} onHide={handleClose}>
+        <Modal.Body></Modal.Body>
+        {/* <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer> */}
+      </Modal>
     </>
   );
 }
