@@ -76,7 +76,7 @@ const MainMappingPage = () => {
   };
 
   return (
-    <Container>
+    <Container style={{ paddingBottom: "2rem" }}>
       <Row style={{ marginTop: "3rem" }}>
         <Col style={{ padding: "0 2rem" }}>
           <div style={{ marginBottom: "2rem" }}>

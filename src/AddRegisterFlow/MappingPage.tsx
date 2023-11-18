@@ -265,7 +265,7 @@ function MappingPage() {
       <Container style={{ paddingTop: "3rem", paddingBottom: "1rem" }}>
         <h5>Submapping Loan register</h5>
       </Container>
-      <Container>
+      <Container style={{ paddingBottom: "2rem" }}>
         <Tabs
           defaultActiveKey="home"
           id="uncontrolled-tab-example"

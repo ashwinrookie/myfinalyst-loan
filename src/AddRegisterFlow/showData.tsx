@@ -6,15 +6,10 @@ const showData = () => {
   const [options, setOptions] = useState<{ value: string; label: string }[]>(
     []
   );
-  const [currentYear, setCurrentYear] = useState<any>(
-    "6544ff49f83e13a9ddb65828"
-  );
-  const [previousYear, setPreviousYear] = useState<any>(
-    "6543c75bf83e13a9ddb657e5"
-  );
-  const [precedingYear, setPrecedingYear] = useState<any>(
-    "6543c75bf83e13a9ddb657e5"
-  );
+  const [currentYear, setCurrentYear] = useState<any>("");
+  const [previousYear, setPreviousYear] = useState<any>("");
+  const [precedingYear, setPrecedingYear] = useState<any>("");
+  const [disclosureData, setDisclosureData] = useState<any>();
   useEffect(() => {
     // Make a GET request to the API
     const headers = {
@@ -44,7 +39,6 @@ const showData = () => {
       });
   }, []);
   const handleInputChange = (field: any) => (selectedOption: any) => {
-    console.log(field, selectedOption);
     if (field == "currentYear") {
       setCurrentYear(selectedOption.value);
     } else if (field == "previousYear") {
@@ -75,6 +69,8 @@ const showData = () => {
       .then((response) => {
         console.log(response);
         // navigate("/showData");
+        setDisclosureData(response);
+        // console.log(disclosureData);
 
         // Handle the response
       })
@@ -87,7 +83,7 @@ const showData = () => {
 
   return (
     <Container>
-      <Row style={{ marginTop: "5rem" }}>
+      <Row style={{ marginTop: "5rem", marginBottom: "3rem" }}>
         <Col>
           <div>
             <label style={{ marginBottom: "5px" }}>
@@ -131,6 +127,54 @@ const showData = () => {
           </Button>
         </Col>
       </Row>
+      {disclosureData?.data.disclosures.map((disclosure: any) => {
+        return (
+          <div key={disclosure.end}>
+            <p>
+              <b>
+                FY {disclosure.start}-{disclosure.end}
+              </b>
+            </p>
+            {disclosure.tables.map((table: any) => {
+              const tableHeadingKeys = Object.keys(table);
+
+              return (
+                <div className="table-container">
+                  <table style={{ width: "100%", marginBottom: "3rem" }}>
+                    <caption style={{ captionSide: "top" }}>
+                      <b>{tableHeadingKeys[0]}</b>
+                    </caption>
+                    <thead>
+                      <tr>
+                        <th>Particulars</th>
+                        {disclosure.IndASStages.map((heading: any) => {
+                          return <th>{heading}</th>;
+                        })}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {table[tableHeadingKeys[0]].map((row: any) => {
+                        // console.log(row);
+                        const rowKeys = Object.keys(row);
+                        // console.log(rowKeys);
+                        return (
+                          <tr>
+                            <th>{rowKeys[0]}</th>
+                            {row[rowKeys[0]].map((value: any) => {
+                              const valueKeys = Object.keys(value);
+                              return <td>{value[valueKeys[0]]}</td>;
+                            })}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
     </Container>
   );
 };
