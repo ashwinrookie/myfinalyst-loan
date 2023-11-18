@@ -1,7 +1,13 @@
 .primary_btn {
-  background-color: green !important;
+  background-color: #03565c !important;
   color: white !important;
   border: none !important;
+}
+.secondary_btn {
+  background-color: #fff !important;
+  color: #03565c !important;
+  border: 1px solid #03565c !important;
+  border-radius: 3px;
 }
 
 .actionIcons {
@@ -26,9 +32,21 @@
 
 .dropZone {
   height: 160px;
-  border: 2px dashed green;
+  border: 2px dashed #03565c;
   margin-top: 1rem;
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
+}
+.nav-tabs .nav-link {
+  color: #000 !important;
+}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  background-color: #03565c !important;
+  color: #fff !important;
+  border-bottom: 0.5px solid #455455 !important;
+}
+.nav-tabs {
+  border-bottom: 0.5px solid #455455 !important;
 }

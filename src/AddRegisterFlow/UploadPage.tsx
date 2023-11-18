@@ -5,12 +5,14 @@ import Container from "react-bootstrap/Container";
 import { useState } from "react";
 import { BsTrashFill } from "react-icons/bs";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import axios from "axios";
+
+import { useNavigate } from "react-router-dom";
 
 function UploadPage() {
+  const loanId = localStorage.getItem("loanId");
   const [excelFiles, setExcelFile] = useState<Array<File>>([]);
   const [onlyOneSheet, setOnlyOneSheet] = useState<Boolean>(true);
-
   const handleFileDelete = (name: string) => {
     const filteredFiles = excelFiles.filter((file) => file.name !== name);
     console.log(filteredFiles);
@@ -24,20 +26,77 @@ function UploadPage() {
       setOnlyOneSheet(true);
     }
   };
+  const navigate = useNavigate();
+
+  function fileToDataURI(file: any) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const key = reader.result;
+
+        // Get the filename and extension
+        const originalName = file.name;
+        const extension = originalName.split(".").pop();
+        resolve({ key, originalName, extension });
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+  const dataObjectPromises = excelFiles.map((file) => fileToDataURI(file));
+
+  const handleUpload = async () => {
+    console.log(loanId);
+
+    Promise.all(dataObjectPromises)
+      .then((dataObjects) => {
+        // Define the data you want to send in the request body, including the Data URIs
+
+        const requestData = { files: dataObjects };
+
+        let headers = {
+          "Content-Type": "application/json",
+          Authorization: "Bearer 6437243509fa58a26d4c7af3",
+        };
+
+        console.log(requestData);
+
+        // Make a POST request with headers and the Data URIs in the request body
+        axios
+          .patch(
+            "https://loan.test.api.myfinalyst.com/loan/files?id=" + loanId,
+            requestData,
+            {
+              headers: headers,
+            }
+          )
+          .then((response) => {
+            console.log(response);
+            navigate("/mainMappingPage");
+
+            // Handle the response
+          })
+          .catch((error) => {
+            // Handle errors
+            console.log(error.response.data.error);
+            alert(error.response.data.error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error converting the files to Data URIs:", error);
+      });
+  };
+
   return (
     <Container style={{ paddingTop: "5rem" }}>
       <div>
-        <b>{localStorage.getItem("registerType")} register format</b>
-        <p>- Please ensure header columns are in the first row.</p>
-        <p>- Remove subtotal values in the middle or at the end.</p>
+        <b>Upload Loan Register</b>
         <p>
-          - Mandatory columns includes Invoice date, Party name, Due date,
-          Credit period, Nature of receivables,Amount.
+          File you upload must contain all the mandatory fields for mapping.
         </p>
       </div>
 
       <div>
-        <b>Upload register</b>
         {onlyOneSheet === true && (
           <Dropzone
             onDrop={(acceptedFiles) => {
@@ -55,8 +114,8 @@ function UploadPage() {
               };
 
               reader.readAsArrayBuffer(file);
-              setExcelFile([...excelFiles, file]);
-              console.log(excelFiles, "after set");
+              const selectedFiles = Array.from(acceptedFiles);
+              setExcelFile(selectedFiles);
             }}
           >
             {({ getRootProps, getInputProps }) => (
@@ -67,7 +126,7 @@ function UploadPage() {
                     style={{
                       width: "60px",
                       height: "50px",
-                      color: "green",
+                      color: "#03565C",
                       marginTop: "2rem",
                     }}
                   />
@@ -109,11 +168,12 @@ function UploadPage() {
           })}
       </div>
       <div style={{ textAlign: "center", marginTop: "2rem" }}>
-        <Link to={"/mappingPage"}>
-          <Button style={{ background: "green", border: "none" }}>
-            Proceed
-          </Button>
-        </Link>
+        <Button
+          onClick={handleUpload}
+          style={{ background: "#03565C", border: "none" }}
+        >
+          Proceed
+        </Button>
       </div>
     </Container>
   );

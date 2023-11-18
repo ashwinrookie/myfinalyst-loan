@@ -90,7 +90,7 @@ function CreatRegister() {
             </tbody>
           </Table>
           <Button
-            style={{ background: "green", width: "100px", border: "none" }}
+            style={{ background: "#03565C", width: "100px", border: "none" }}
             onClick={() => handleAddLine()}
           >
             +
@@ -137,7 +137,7 @@ function CreatRegister() {
             </tbody>
           </Table>
           <Button
-            style={{ background: "green", width: "100px", border: "none" }}
+            style={{ background: "#03565C", width: "100px", border: "none" }}
             onClick={() => handleAddLine()}
           >
             +
@@ -182,7 +182,7 @@ function CreatRegister() {
             </tbody>
           </Table>
           <Button
-            style={{ background: "green", width: "100px", border: "none" }}
+            style={{ background: "#03565C", width: "100px", border: "none" }}
             onClick={() => handleAddLine()}
           >
             +
@@ -231,7 +231,7 @@ function CreatRegister() {
             </tbody>
           </Table>
           <Button
-            style={{ background: "green", width: "100px", border: "none" }}
+            style={{ background: "#03565C", width: "100px", border: "none" }}
             onClick={() => handleAddLine()}
           >
             +
@@ -278,7 +278,7 @@ function CreatRegister() {
 
           <Button
             onClick={() => handleAddBlock()}
-            style={{ background: "green", border: "none" }}
+            style={{ background: "#03565C", border: "none" }}
           >
             Add new block
           </Button>
